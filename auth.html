@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit360° - Your Football Fitness Journey</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <a href="index.html">←Back</a>
+    <div class="container">
+        <div class="auth-card">
+            <!-- Header -->
+            <div class="header">
+                <h1>Fit<b>360°</b></h1>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="tab-switcher">
+                    <button class="tab-btn active" data-form="login">Login</button>
+                    <button class="tab-btn" data-form="signup">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Login <span class="arrow">→</span>
+                    </button>
+
+                    <p class="switch-text">
+                        Don't have an account? 
+                        <button type="button" class="switch-btn" data-switch="signup">Sign up</button>
+                    </p>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="input-group">
+                        <input type="text" name="fullName" placeholder="Full Name" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <select name="role" required>
+                            <option value="player">Player</option>
+                            <option value="coach">Coach</option>
+                            <option value="physio">Physio</option>
+                            <option value="trainer">Fitness Trainer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Create Account <span class="arrow">→</span>
+                    </button>
+
+                    <p class="switch-text">
+                        Already have an account? 
+                        <button type="button" class="switch-btn" data-switch="login">Login</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

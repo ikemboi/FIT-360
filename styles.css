@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.header {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(Images/banner.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+nav {
+  display: flex;
+  padding: 2% 6%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+}
+.text-box {
+  width: 90%;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.text-box h1 {
+  font-size: 62px;
+}
+.text-box p {
+  margin: 10px 0 40px;
+  color: white;
+  font-size: 20px;
+}
+.hero-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 34px;
+  font-size: 13px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+.hero-btn:hover {
+  border: 1px solid green;
+  background: green;
+  transition: 1s;
+}
+html {
+  scroll-behavior: smooth;
+}
+nav .fa {
+  display: none;
+}
+
+.about {
+  margin-top: 50px;
+  text-align: center;
+  position: relative;
+}
+.about h1 {
+  font-size: 50px;
+}
+.about h5 {
+  font-size: 30px;
+  font-style: italic;
+}
+.about p {
+  font-size: 20px;
+}
+.features {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: black;
+}
+
+/* Feature Container */
+.feature-container,
+.steps-container,
+.benefits-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Feature Card */
+.feature-card,
+.step,
+.benefit {
+  padding: 30px;
+  text-align: center;
+  width: 260px;
+}
+
+/* Icons */
+.feature-card i {
+  font-size: 50px;
+  color: green;
+}
+
+/* Title */
+.feature-card h3,
+.step h3,
+.benefit h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+/* Description */
+.feature-card p,
+.step p,
+.benefit p {
+  font-size: 14px;
+  color: black;
+}
+.how-it-works {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.how-it-works h2,
+.who-benefits h2,
+.testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.step-icon {
+  font-size: 2rem;
+  color: green;
+  margin-bottom: 10px;
+}
+.who-benefits {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.benefit i {
+  font-size: 2rem;
+  color: green;
+  margin-bottom: 10px;
+}
+.testimonials {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimonial {
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 300px;
+  text-align: center;
+  font-style: italic;
+}
+.testimonial p {
+  margin-bottom: 10px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+.testimonial h4 {
+  font-size: 16px;
+  color: black;
+  font-weight: bolder;
+}
+footer {
+  background: black;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links a,
+.footer-socials a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+  color: green;
+}
+
+.footer-socials a i {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,1124 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: green;
+  color: #fff;
+  padding: 15px 20px;
+}
+
+.navbar .logo {
+  font-size: 24px;
+}
+
+.navbar .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.navbar #welcome-message {
+  margin-right: 15px;
+  font-size: 16px;
+}
+
+#logout-btn {
+  padding: 8px 15px;
+  border: none;
+  background: red;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+#logout-btn:hover {
+  background: #ff2e43;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Dashboard Sections */
+.dashboard-section {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.dashboard-section h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Data Sections */
+.data-section {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.data-section h3 {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.data-section ul {
+  list-style: none;
+}
+
+.data-section li {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Hidden Elements */
+.hidden {
+  display: none;
+}
+.personal-info {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.personal-info h3 {
+  margin-bottom: 0.5rem;
+  color: black;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.info-grid div {
+  flex: 1 1 calc(25% - 0.5rem); /* Two items per row; adjust spacing */
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  text-align: left;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal Container */
+.modal-profile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Hidden State */
+.modal-profile.hidden {
+  display: none; /* Hide the modal */
+}
+
+/* Modal Content */
+.modal-profile .modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px; /* Limit width for better readability */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Modal Title */
+.modal-profile .modal-content h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Input Groups */
+.modal-profile .modal-content .input-group {
+  margin-bottom: 1rem;
+}
+
+/* Input Fields */
+.modal-profile .modal-content .input-group input,
+.modal-profile .modal-content .input-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Input Focus State */
+.modal-profile .modal-content .input-group input:focus,
+.modal-profile .modal-content .input-group select:focus {
+  border-color: #4caf50; /* Green border on focus */
+  outline: none;
+}
+
+/* Submit Button */
+.modal-profile .modal-content .btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4caf50; /* Green button */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Submit Button Hover State */
+.modal-profile .modal-content .btn-primary:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+/* Staff Section */
+.staff-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.staff-card {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #dfe6de;
+}
+
+.staff-card i {
+  font-size: 1.5rem;
+  color: green;
+  margin-bottom: 0.5rem;
+}
+
+/* Injury Status Section */
+.injury-container {
+  margin-bottom: 1.5rem;
+}
+
+.injury-status {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+}
+
+.injury-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+#injury-status-indicator {
+  font-size: 0.8em;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.injured {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.healthy {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.progress-container {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: green;
+  transition: width 0.5s ease;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  min-height: 250px;
+}
+
+.metric-card canvas {
+  max-height: 200px !important;
+}
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.carousel-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-arrow {
+  background: white;
+  color: green;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 100%;
+  cursor: pointer;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+.carousel-arrow:hover {
+  background: #006400;
+  color: white;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: green;
+}
+.session-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.session-item {
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.session-type {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.session-date {
+  font-size: 0.85em;
+  color: #7f8c8d;
+}
+
+.session-stats {
+  text-align: right;
+}
+
+.session-stats span {
+  display: block;
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+/* Coach Dashboard */
+.coach-header {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.player-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.player-card h4 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.player-stats {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-item span:first-child {
+  color: #666;
+  font-weight: 500;
+}
+
+.stat-item span:last-child {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: green; /* Green */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #006d05;
+  transform: scale(1.05);
+}
+
+.btn-primary i {
+  font-size: 16px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.visible {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.form-select:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #333;
+}
+.coach-summary-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card i {
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  width: 50px;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-value {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.summary-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Status colors */
+.summary-card.total {
+  border-left: 4px solid #2196f3;
+}
+.summary-card.injured {
+  border-left: 4px solid #ff5722;
+}
+.summary-card.healthy {
+  border-left: 4px solid #4caf50;
+}
+
+.injury-status-coach {
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  width: fit-content;
+}
+
+.injury-status-coach.healthy {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.injury-status-coach.injured {
+  background: #ffebee;
+  color: #ff5252;
+}
+/* Physio Dashboard Styles */
+.physio-summary-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(400px, 1fr)
+  ); /* Adjust column size */
+  gap: 1.5rem; /* Space between cards */
+  padding: 1rem;
+}
+
+/* Patient Card Styling */
+.patient-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.patient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Patient Card Title */
+.patient-card h4 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Injury History Section */
+.injury-history {
+  margin-top: 1rem;
+}
+
+.injury-item {
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.injury-item.active {
+  border-left: 4px solid #ff5722;
+}
+
+.injury-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.injury-type {
+  font-weight: 600;
+  color: #333;
+}
+
+.injury-severity {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.injury-dates {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+}
+
+.recovery-progress {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.recovery-progress .progress-bar {
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.no-injuries {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+.injury-management {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.existing-injuries {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.injury-record {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.injury-record.active {
+  border-left: 4px solid #ff5722;
+}
+/* Player Details Modal */
+#player-details-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Hide modal by default */
+#player-details-modal.hidden {
+  display: none;
+}
+
+/* Modal Content Box */
+#player-details-modal .modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 1000px; /* Limit width for better readability */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  position: relative;
+}
+
+/* Modal Title */
+#player-details-modal .modal-content h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Player Info Section */
+.player-info {
+  text-align: left;
+  font-size: 1rem;
+  color: #555;
+}
+
+.player-info p {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.player-info h4 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Injury History List */
+#player-injury-history {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px; /* Scrollable history */
+  overflow-y: auto;
+}
+
+#player-injury-history li {
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+/* Close Button */
+#close-player-details {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#close-player-details:hover {
+  color: #000;
+}
+
+/* Add Injury Modal */
+#add-injury-modal, #add-performance-modal, #add-tracker-modal, #add-session-modal, #add-nutrition-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Hide modal by default */
+#add-injury-modal.hidden, #add-performance-modal.hidden, #add-tracker-modal.hidden, #add-session-modal.hidden, #add-nutrition-modal.hidden {
+  display: none;
+}
+
+/* Modal Content */
+#add-injury-modal .modal-content, #add-performance-modal .modal-content, #add-tracker-modal .modal-content, #add-session-modal .modal-content, #add-nutrition-modal .modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close Button */
+#close-add-injury, #close-add-performance, #close-add-tracker, #close-add-session, #close-add-nutrition {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  color: #555;
+  cursor: pointer;
+}
+
+#close-add-injury:hover, #close-add-performance:hover, #close-add-tracker:hover, #close-add-session:hover, #close-add-nutrition:hover {
+  color: #000;
+}
+
+/* Form Inputs */
+#add-injury-form .input-group, #add-performance-form .input-group, #add-tracker-form .input-group, #add-session-form .input-group, #add-nutrition-form .input-group {
+  margin-bottom: 1rem;
+}
+
+#add-injury-form input,
+#add-injury-form select,
+#add-performance-form input,
+#add-performance-form select,
+#add-tracker-form input,
+#add-tracker-form select,
+#add-session-form input,
+#add-session-form select,
+#add-nutrition-form input, 
+#add-nutrition-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#add-injury-form button, #add-performance-form button, #add-tracker-form button, #add-session-form button, #add-nutrition-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#add-injury-form button:hover, #add-performance-form button:hover, #add-tracker-form button:hover, #add-session-form button:hover, #add-nutrition-form button:hover {
+  background-color: #45a049;
+}
+
+/* Summary card colors */
+.summary-card.critical {
+  border-left: 4px solid #ff5722;
+}
+.summary-card.recovering {
+  border-left: 4px solid #4caf50;
+}
+
+.trainer-summary-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(400px, 1fr)
+  ); /* Adjust column size */
+  gap: 1.5rem; /* Space between cards */
+  padding: 1rem;
+}
+
+.client-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.plan-card.high {
+  border-left: 4px solid #ff5722;
+}
+
+.plan-card.medium {
+  border-left: 4px solid #ffc107;
+}
+
+.plan-card.low {
+  border-left: 4px solid #4caf50;
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.intensity-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.plan-card.high .intensity-badge {
+  background: #ffebee;
+  color: #ff5252;
+}
+
+.plan-card.medium .intensity-badge {
+  background: #fff3e0;
+  color: #ffa000;
+}
+
+.plan-card.low .intensity-badge {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.plan-details {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.no-plans {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+.client-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.performance-metrics {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.performance-metrics button {
+  background: green;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.summary-card-trainer.distance {
+  border-left: 4px solid #2196f3;
+}
+/* Summary card colors */
+.summary-card-trainer.active {
+  border-left: 4px solid #ffc107;
+}
+.summary-card-trainer.intensity {
+  border-left: 4px solid #ff5722;
+}
+.modal-coach-player, .modal-trainer-player, .modal-physio-player {
+  display: flex; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-content {
+  padding: 20px;
+  width: 50%;
+  height: fit-content;
+  border-radius: 5px;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333333;
+  text-align: center;
+}
+
+.coach-player-info p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #555555;
+}
+
+.coach-player-info strong {
+  color: #333333;
+}
+
+.coach-player-info ul {
+  list-style-type: disc;
+  margin: 10px 0 0 20px;
+  padding: 0;
+}
+
+.coach-player-info ul li {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555555;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #666666;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333333;
+}
+
+.modal-coach-player.hidden, .modal-trainer-player.hidden, .modal-physio-player.hidden {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .user-info {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fit360° Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">Fit<b>360°</b></div>
+      <div class="user-info">
+        <span id="welcome-message">Welcome, User</span>
+        <button id="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </nav>
+    <div id="assignment-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Assign Player</h3>
+        <select id="player-select" class="form-select">
+          <option value="">Loading players...</option>
+        </select>
+        <button id="confirm-assign" class="btn-primary">Assign</button>
+      </div>
+    </div>
+
+    <!-- Role-Specific Dashboards -->
+    <div id="player-dashboard" class="dashboard-section hidden">
+      <h2>Player Dashboard</h2>
+      <!-- Staff Section at Top -->
+      <div class="staff-container">
+        <div class="staff-card">
+          <i class="fas fa-user-tie"></i>
+          <h4>Coach</h4>
+          <p id="staff-coach">Loading...</p>
+        </div>
+        <div class="staff-card">
+          <i class="fas fa-hand-holding-medical"></i>
+          <h4>Physio</h4>
+          <p id="staff-physio">Loading...</p>
+        </div>
+        <div class="staff-card">
+          <i class="fas fa-dumbbell"></i>
+          <h4>Trainer</h4>
+          <p id="staff-trainer">Loading...</p>
+        </div>
+      </div>
+
+      <!-- Injury Status Section -->
+      <div class="injury-container">
+        <div class="injury-status">
+          <h3>
+            <i class="fas fa-band-aid"></i> Injury Status
+            <span id="injury-status-indicator"></span>
+          </h3>
+          <div class="injury-details">
+            <div class="detail-item">
+              <span>Type:</span>
+              <span id="injury-type">-</span>
+            </div>
+            <div class="detail-item">
+              <span>Severity:</span>
+              <span id="injury-severity">-</span>
+            </div>
+            <div class="detail-item">
+              <span>Recovery Date:</span>
+              <span id="injury-recovery-date">-</span>
+            </div>
+          </div>
+          <div class="progress-label">Recovery Progress</div>
+          <div class="progress-container">
+            <div id="recovery-progress" class="progress-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="metric-card">
+        <h4>Recent Training Sessions</h4>
+        <div id="training-sessions-list" class="session-list"></div>
+      </div>
+      <br />
+
+      <!-- Compact Charts -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h4>Performance</h4>
+          <canvas id="performance-chart"></canvas>
+        </div>
+        <div class="metric-card">
+          <h4>Weekly Activity</h4>
+          <div class="carousel-container">
+            <button class="carousel-arrow left" onclick="switchMetric(-1)">
+              &lt;
+            </button>
+            <div class="carousel-track">
+              <div class="carousel-slide active" data-metric="steps">
+                <canvas id="activity-steps-chart"></canvas>
+              </div>
+              <div class="carousel-slide" data-metric="heart">
+                <canvas id="activity-heart-chart"></canvas>
+              </div>
+              <div class="carousel-slide" data-metric="distance">
+                <canvas id="activity-distance-chart"></canvas>
+              </div>
+            </div>
+            <button class="carousel-arrow right" onclick="switchMetric(1)">
+              &gt;
+            </button>
+          </div>
+          <div class="carousel-indicators">
+            <span class="indicator active" data-target="steps"></span>
+            <span class="indicator" data-target="heart"></span>
+            <span class="indicator" data-target="distance"></span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <h4>Nutrition</h4>
+          <canvas id="nutrition-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div id="coach-dashboard" class="dashboard-section hidden">
+      <h2>Coach Dashboard</h2>
+      <div class="coach-header">
+        <button class="btn-primary" id="add-player-btn">
+          <i class="fas fa-plus"></i> Assign Player
+        </button>
+      </div>
+      <!-- Summary cards will be inserted here automatically -->
+      <div class="players-grid" id="assigned-players-container">
+        <!-- Player cards will be inserted here -->
+      </div>
+    </div>
+
+    <div id="physio-dashboard" class="dashboard-section hidden">
+      <h2>Physio Dashboard</h2>
+      <div class="physio-header">
+        <button class="btn-primary" id="add-patient-btn">
+          <i class="fas fa-plus"></i> Add Patient
+        </button>
+        <br />
+      </div>
+      <!-- Summary will be inserted here -->
+      <div class="patients-grid" id="assigned-patients-container">
+        <!-- Patient cards will be inserted here -->
+      </div>
+    </div>
+
+    <div id="trainer-dashboard" class="dashboard-section hidden">
+      <h2>Trainer Dashboard</h2>
+      <div class="trainer-header">
+        <button class="btn-primary" id="add-client-btn">
+          <i class="fas fa-plus"></i> Assign Player
+        </button>
+      </div>
+      <br />
+      <!-- Summary Cards -->
+      <div class="trainer-summary-container" id="trainer-summary"></div>
+      <!-- Assigned Players -->
+      <div class="clients-grid" id="assigned-clients-container"></div>
+    </div>
+    <div id="profile-modal" class="modal-profile hidden">
+      <div class="modal-content">
+        <h3>Complete Your Profile</h3>
+        <form id="profileForm">
+          <div class="input-group">
+            <input
+              type="number"
+              id="height"
+              placeholder="Height (cm)"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="number"
+              step="0.1"
+              id="weight"
+              placeholder="Weight (kg)"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <input type="date" id="dob" required />
+          </div>
+          <div class="input-group">
+            <select id="position" required>
+              <option value="">Select Position</option>
+              <option>Goalkeeper</option>
+              <option>Defender</option>
+              <option>Midfielder</option>
+              <option>Forward</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <select id="gender" required>
+              <option value="">Select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary">Save Profile</button>
+        </form>
+      </div>
+    </div>
+    <div id="physio-player-modal" class="modal-physio-player hidden">
+      <div class="modal-content">
+        <span class="close" id="close-physio-player-modal">&times;</span>
+        <h3 id="physio-player-name">Player Details</h3>
+        <div class="physio-player-info">
+          <p><strong>Age:</strong> <span id="physio-player-age"></span></p>
+          <p><strong>Gender:</strong> <span id="physio-player-gender"></span></p>
+          <p><strong>Email:</strong> <span id="physio-player-email"></span></p>
+          <p><strong>Position:</strong> <span id="physio-player-position"></span></p>
+          <p><strong>Height:</strong> <span id="physio-player-height"></span></p>
+          <p><strong>Weight:</strong> <span id="physio-player-weight"></span></p><hr>
+          <!-- ML Recommendations for Physios -->
+           <h2>Fit360° Recommendations</h2>
+          <p>
+            <strong>Injury Risk:</strong> <span id="physio-injury-risk"></span>
+          </p>
+          <p>
+            <strong>Protein Change:</strong>
+            <span id="physio-protein-change"></span>
+          </p>
+          <p>
+            <strong>Carbs Change:</strong>
+            <span id="physio-carbs-change"></span>
+          </p>
+          <p>
+            <strong>Fat Change:</strong> <span id="physio-fat-change"></span>
+          </p><br><hr><br>
+          <div style=" justify-content: space-between; align-items: center" >
+            <button class="btn-primary" id="add-injury-btn">Add Injury</button><br>
+            <button class="btn-primary" id="add-nutrition-btn">
+              Add Nutrition Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="add-nutrition-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" id="close-add-nutrition">&times;</span>
+        <h3>Add Nutrition Details for <span id="nutrition-player-name"></span></h3>
+        <form id="add-nutrition-form">
+          <div class="input-group">
+            <label>Diet Plan</label>
+            <input type="text" id="nutrition-diet-plan" required />
+          </div>
+          <div class="input-group">
+            <label>Calories (kcal)</label>
+            <input type="number" id="nutrition-calories-per-day" required />
+          </div>
+          <div class="input-group">
+            <label>Protein (g)</label>
+            <input type="number" id="nutrition-protein-intake" required />
+          </div>
+          <div class="input-group">
+            <label>Carbs (g)</label>
+            <input type="number" id="nutrition-carbs-intake" required />
+          </div>
+          <div class="input-group">
+            <label>Fat (g)</label>
+            <input type="number" id="nutrition-fat-intake" required />
+          </div>
+          <div>
+            <label>Recorded</label>
+            <input type="date" id="nutrition-created-at" required />
+          </div>
+          <button type="submit" class="btn-primary">Save Nutrition</button>
+        </form>
+      </div>
+    </div>
+    <!-- Add Injury Modal -->
+    <div id="add-injury-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" id="close-add-injury">&times;</span>
+        <h3>Add Injury</h3>
+        <h3>Add Injury for <span id="injury-player-name"></span></h3>
+        <form id="add-injury-form">
+          <div class="input-group">
+            <label>Injury Type</label>
+            <input type="text" id="injury-type-input" required />
+          </div>
+          <div class="input-group">
+            <label>Severity</label>
+            <select id="injury-severity-input" required>
+              <option value="Mild">Mild</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Severe">Severe</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Recovery Time (Days)</label>
+            <input type="number" id="injury-recovery-time" min="1" required />
+          </div>
+          <div class="input-group">
+            <label>Injury Date</label>
+            <input type="date" id="injury-date-input" required />
+          </div>
+          <button type="submit" class="btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <!-- Coach Player Modal (for detailed info on a coach’s assigned player) -->
+    <div id="coach-player-modal" class="modal-coach-player hidden">
+      <div class="modal-content">
+        <span class="close" id="close-coach-player-modal">&times;</span>
+        <h3 id="coach-player-name">Player Details</h3>
+        <div class="coach-player-info">
+          <p><strong>Age:</strong> <span id="coach-player-age"></span></p>
+          <p><strong>Gender:</strong> <span id="coach-player-gender"></span></p>
+          <p><strong>Email:</strong> <span id="coach-player-email"></span></p>
+          <p>
+            <strong>Last Performance Check:</strong>
+            <span id="coach-player-performance"></span>
+          </p>
+          <p>
+            <strong>Last Training Session:</strong>
+            <span id="coach-player-training"></span>
+          </p>
+          <p>
+            <strong>Injury Status:</strong>
+            <span id="coach-player-injury-status"></span>
+          </p>
+          <h4>Injury History</h4>
+          <ul id="coach-player-injury-history">
+            <!-- Injury history items will be inserted here -->
+          </ul>
+          <!-- ML Recommendations for Coaches -->
+          <p>
+            <strong>Injury Risk:</strong> <span id="coach-injury-risk"></span>
+          </p>
+          <p>
+            <strong>Intensity Change:</strong>
+            <span id="coach-intensity-change"></span>
+          </p>
+          <p>
+            <strong>Other Recommendations:</strong>
+            <span id="coach-other-recommendations"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="detailed-metrics-modal" class="modal-trainer-player hidden">
+      <div class="modal-content">
+        <span class="close" id="close-detailed-metrics">&times;</span>
+        <h3>Detailed Metrics for <span id="metrics-client-name"></span></h3>
+        <div class="detailed-metrics-info">
+          <p>
+            <strong>Age:</strong> <span id="metrics-client-age"></span>
+          </p>
+          <p><strong>Gender:</strong> <span id="metrics-client-gender"></span></p>
+          <p><strong>Email:</strong> <span id="metrics-client-email"></span></p>
+          <p><strong>Height:</strong> <span id="metrics-client-height"></span></p>
+          <p><strong>Weight:</strong> <span id="metrics-client-weight"></span></p>
+          <p><strong>Injury Status: <span id="metrics-client-injury-status"></span></strong></p>
+          <p>
+            <strong>Last Training Session:</strong>
+            <span id="metrics-last-training"></span>
+          </p>
+          <p>
+            <strong>Last Performance Check:</strong>
+            <span id="metrics-last-performance"></span>
+          </p>
+          <!-- ML Recommendations for Trainers -->
+          <p>
+            <strong>Intensity Change:</strong>
+            <span id="trainer-intensity-change"></span>
+          </p>
+          <p>
+            <strong>Other Recommendations:</strong>
+            <span id="trainer-other-recommendations"></span>
+          </p>
+          <br />
+          <hr />
+          <br />
+          <div style="display: flex; justify-content: space-between">
+            <button class="btn-primary" id="add-performance-btn">
+              Enter Player performance
+            </button>
+            <button class="btn-primary" id="add-tracker-btn">
+              Enter Tracker Data
+            </button>
+            <button class="btn-primary" id="add-session-btn">
+              Enter Training Session
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="add-performance-modal" class="modal-add-performance hidden">
+      <div class="modal-content">
+        <span class="close" id="close-add-performance">&times;</span>
+        <h3>Add Performance for <span id="performance-player-name"></span></h3>
+        <form id="add-performance-form">
+          <div class="input-group">
+            <label>Speed (km/h)</label>
+            <input type="number" id="performance-speed" required />
+          </div>
+          <div class="input-group">
+            <label>Endurance</label>
+            <input type="float" id="performance-endurance" required />
+          </div>
+          <div class="input-group">
+            <label>Agility</label>
+            <input type="float" id="performance-agility" required />
+          </div>
+          <div class="input-group">
+            <label>Stamina</label>
+            <input type="float" id="performance-stamina" required />
+          </div>
+          <div class="input-group">
+            <label>Recorded</label>
+            <input type="date" id="performance-recorded-at" required />
+          </div>
+          <button type="submit" class="btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div id="add-tracker-modal" class="modal-add-tracker hidden">
+      <div class="modal-content">
+        <span class="close" id="close-add-tracker">&times;</span>
+        <h3>Add Tracker Data for <span id="tracker-player-name"></span></h3>
+        <form id="add-tracker-form">
+          <div class="input-group">
+            <label>Heart Rate</label>
+            <input type="number" id="tracker-heart-rate" required />
+          </div>
+          <div class="input-group">
+            <label>Steps Taken</label>
+            <input type="number" id="tracker-steps-taken" required />
+          </div>
+          <div class="input-group">
+            <label>Distance Covered (KM)</label>
+            <input type="float" id="tracker-distance-covered" required />
+          </div>
+          <div class="input-group">
+            <label>Recorded</label>
+            <input type="date" id="tracker-recorded-at" required />
+          </div>
+          <button type="submit" class="btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div id="add-session-modal" class="modal-add-session hidden">
+      <div class="modal-content">
+        <span class="close" id="close-add-session">&times;</span>
+        <h3>Add Training Session for <span id="session-player-name"></span></h3>
+        <form id="add-session-form">
+          <div class="input-group">
+            <label>Session Type</label>
+            <input type="text" id="session-type" required />
+          </div>
+          <div class="input-group">
+            <label>Duration (Minutes)</label>
+            <input type="number" id="session-duration" required />
+          </div>
+          <div class="input-group">
+            <label>Calories Burned (Kcal)</label>
+            <input type="number" id="session-calories-burned" required />
+          </div>
+          <div class="input-group">
+            <label>Intensity</label>
+            <select id="session-intensity">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Recorded</label>
+            <input type="date" id="session-date" required />
+          </div>
+          <button type="submit" class="btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

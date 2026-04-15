@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  margin-right: 20px;
+}
+/* Container Styles */
+.container {
+  width: 100%;
+  max-width: 440px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Header Styles */
+.header {
+  background: green;
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+.header h1 {
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+/* Form Container Styles */
+.form-container {
+  padding: 2rem;
+}
+
+/* Tab Switcher Styles */
+.tab-switcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 0.25rem;
+}
+
+.tab-btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: green;
+  color: white;
+}
+
+/* Form Styles */
+.auth-form {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.auth-form.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: green;
+}
+
+.input-group.error input,
+.input-group.error select {
+  border-color: #dc2626;
+}
+
+.error-message {
+  display: block;
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  min-height: 1rem;
+}
+
+/* Button Styles */
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: green;
+}
+
+.arrow {
+  font-size: 1.2rem;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.forgot-password a {
+  color: green;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Switch Text Styles */
+.switch-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: green;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.switch-btn:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 1rem;
+  }
+}
